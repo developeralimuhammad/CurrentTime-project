@@ -1,0 +1,50 @@
+body{
+    font-family: "work sans", sans-serif;
+    /* margin-left: 400px; */
+    margin-top: 150px;
+    background: #fff;
+}
+
+
+.time{
+    background-color: black;
+    color: #fff;
+    border: 7px solid white;
+    box-shadow: 0 2px 10px rgb(14, 13, 13),
+                0 2px 10px 0 rgb(19, 18, 18);
+    padding: 8px ;
+    align-items: center;
+    margin: auto;
+    width: 500px;
+}
+
+.hms{
+    font-size: 68pt;
+    font-weight: 200;
+    text-align: center;
+
+}
+
+.amps{
+    font-size: 22pt;
+    text-align: center;
+}
+
+.date{
+    font-size: 15pt;
+    text-align: center;
+    padding-top: 11px;
+
+}
+
+
+@media (max-width: 550px){
+    .time{
+        width: 304px;
+    }
+
+    .hms {
+        font-size: 51pt;
+      }
+}
+

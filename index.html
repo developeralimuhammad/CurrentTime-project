@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Clock Project</title>
+</head>
+<body>  
+    <div class="time">
+        <!-- for time -->
+        <div class="hms"></div>
+            <!-- for Am/Pm -->
+            <div class="amps"></div>
+                <!-- for date -->
+                <div class="date"></div>                
+    </div>
+
+    <!-- Now add jawascript code -->
+
+    <script>
+        function updateTime(){
+            var dateInfo = new Date();
+
+            // time
+            var hr,
+            _min = (dateInfo.getMinutes() < 10) ? "0" + dateInfo.getMinutes() : dateInfo.getMinutes(),
+            sec = (dateInfo.getSeconds() < 10) ?  "0" + dateInfo.getSeconds() : dateInfo.getSeconds(),
+            ampm = (dateInfo.getHours() >= 12) ? "PM" : "AM";
+
+            // replace 0 with 12 at midnight, subject 12 form hour if 13-23
+
+            if(dateInfo.getHours() == 0){
+                hr =12;
+            }else if (dateInfo.getHours() > 12){
+                hr = dateInfo.getHours() - 12;
+            }else{
+                hr = dateInfo.getHours();
+            }
+            
+
+            //Current time//
+            var CurrentTime = hr + ":" + _min + ":" + sec;            
+
+
+            // print time
+            document.getElementsByClassName("hms")[0].innerHTML = CurrentTime;
+            document.getElementsByClassName("amps")[0].innerHTML = ampm;
+
+
+            // date 
+            var dow = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+                
+            ],
+
+            month = [
+                "january",
+                "Febrary",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "Septumber",
+                "Octuber",
+                "November",
+                "December"
+
+            ],
+            day = dateInfo.getDate();
+
+            //store date
+            var Currentdate = dow[dateInfo.getDay()] + ", " +month[dateInfo.getMonth()] + " " + day;
+
+            document.getElementsByClassName("date")[0].innerHTML = Currentdate;
+
+
+
+
+
+
+        };
+        // print time and date once, then update them every second 
+        updateTime();
+        setInterval(function(){
+            updateTime()
+        }, 1000);
+
+
+    </script>
+
+</body>
+</html>
+
